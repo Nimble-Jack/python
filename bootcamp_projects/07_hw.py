@@ -28,9 +28,3 @@ def ask():
     print('You\'r number squared is: %i ' % num**2)
 
 ask()
-
-'''
-Hello Albert
-I applied to a Test Engineer opening and would be grateful for 10min of your time.
-I was rejected before an interview and would love to know what about my resume falls short and any skills to improve on. Since you're a Test Engineer Manager I thought you're the best person to talk with.
-'''
