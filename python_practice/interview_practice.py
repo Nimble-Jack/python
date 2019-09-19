@@ -1,4 +1,5 @@
 '''
+-------------------------------------------------------------------------------
 Create a function that takes in a month and returns the days in month
 account for miss spellings
 account for abbreviations (first 3 letters)
@@ -65,3 +66,21 @@ def product_without_i(my_list):
 
 product_without_i([1, 2, 3, 4, 5, 6])
 product_without_i([6, 5, 4, 3, 2, 1])
+
+'''
+----------------------------------------------------------------------------------------
+Write a program that prints the integers from 1 to 100. But for multiples of three print "Fizz"
+instead of the number, and for the multiples of five print "Buzz". For numbers which are multiples
+of both three and five print "FizzBuzz".
+'''
+def fizzbuzz():
+    for num in range(1,101):
+        if num%3 == 0 and num%5 == 0:
+            print('FizzBuzz')
+        elif num%5 == 0:
+            print('Buzz')
+        elif num%3 == 0:
+            print('Fizz')
+        else:
+            print(num)
+fizzbuzz()

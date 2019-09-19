@@ -50,6 +50,3 @@ for num in range(1,101):
 st3 = 'Create a list of the first letters of every word in this string'
 my_letters = [ letter[0] for letter in st3.split() ]
 #print(my_letters)
-
-#%%
-print('h')
