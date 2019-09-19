@@ -49,8 +49,8 @@ class Hand():
 
     def ace_value(self):
         for index, card in enumerate(self.cards):
-            if 'A' in card[index] and item[1] == 11:
-                item[1] = 1
+            if 'A' in card[index] and card[1] == 11:
+                card[1] = 1
                 break
 
     def points(self):
