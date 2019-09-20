@@ -2,7 +2,8 @@
 /*
 
 # Whitelist some directories
-!bootcamp_projects
+!bootcamp_projecs
+!interview_practice
 !python_practice
 
 # Whitelist some files
