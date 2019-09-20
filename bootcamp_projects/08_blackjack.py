@@ -31,16 +31,22 @@ class Hand():
         self.point_value = 0
         self.aces = 0
 
+    def points(self):
+        for index, card in enumerate(self.cards):
+            self.point_value += self.cards[index][1]
+
     def show(self):
         current_hand = []
+        s = ', '
+        self.point_value = 0
         for card in self.cards:
             current_hand.append(card[0])
-        #add more human readable format
-        return 'Your hand: \n %s' % current_hand
+        Hand.points(self)
+        return 'Your hand: %s \nYour points: %i' % (s.join(current_hand),self.point_value)
 
     def hit(self, deck):
         self.cards.append((deck.pop()))
-        if self.cards.append((deck.pop()))[0] == 'A':
+        if deck.pop()[0] == 'A':
             self.aces += 1
 
     def deal(self, deck):
@@ -53,10 +59,7 @@ class Hand():
                 card[1] = 1
                 break
 
-    def points(self):
-        for index, item in enumerate(self.cards):
-            self.point_value += self.cards[index][1]
-
+#need to add in the Ace check for bust
     def is_blackjack(self):
         if len(self.cards) == 2 and self.point_value == 21:
             print('Black Jack! \n sum is: %i' % self.point_value)
