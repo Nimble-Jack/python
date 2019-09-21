@@ -27,7 +27,8 @@ class Deck():
 
 
 class Hand():
-    def __init__(self):
+    def __init__(self,player_name):
+        self.player_name = player_name
         self.cards = []
         self.point_value = 0
         self.aces = 0
@@ -37,6 +38,7 @@ class Hand():
         self.point_value = 0
         for index, card in enumerate(self.cards):
             self.point_value += self.cards[index][1]
+        return self.point_value
 
     def check_and_show(self):
         # Shows hand in easy to read format
@@ -51,10 +53,13 @@ class Hand():
             Hand.ace_value_to_1(self)
             Hand.points(self)
             self.aces -= 1
-        return 'Your hand: %s \nYour points: %i' % (s.join(current_hand),self.point_value)
+        return '%s hand: %s \n%s points: %i' % (self.player_name,s.join(current_hand),self.player_name,self.point_value)
 
     def hit(self, deck):
         # draws a card from deck and checks if it's an Ace
+        # the check for an Ace has to come AFTER the pop then append
+        # then just check the newly appended card's first item's first character
+        # aka my_list[-1][0][0]
         self.cards.append((deck.pop()))
         if self.cards[-1][0][0] == 'A':
             self.aces += 1
@@ -78,7 +83,7 @@ class Hand():
             print('Black Jack!')
             return True
         elif self.point_value > 21:
-            print('Bust...You loose.')
+            print('Bust...')
             return True
         else:
             return False
@@ -93,10 +98,13 @@ if __name__ == '__main__':
     play_again = True
     while play_again:
         game = Deck()
-        player = Hand()
+        player = Hand('Your')
+        dealer = Hand('Dealer')
         game.shuffle()
         player.deal(game.deck)
+        dealer.deal(game.deck)
         while not game_over:
+            # Player
             player.check_and_show()
             print(player.check_and_show())
             if player.is_blackjack():
@@ -109,7 +117,26 @@ if __name__ == '__main__':
                 if player.is_blackjack():
                     game_over = True
                     break
-            # do something if stay
+            # Dealer
+            dealer.check_and_show()
+            print(dealer.check_and_show())
+            if dealer.is_blackjack():
+                game_over = True
+                break
+            while dealer.points() < 17:
+                dealer.hit(game.deck)
+                dealer.check_and_show()
+                print(dealer.check_and_show())
+                if dealer.is_blackjack():
+                    game_over = True
+                    break
+            # TODO fix the 'you'
+            if dealer.points() > player.points() or dealer.points() == player.points():
+                print('You loose!')
+                game_over = True
+            else:
+                print('You win!')
+                game_over = True
         if raw_input('Would you like to play again? \'yes\'? ').lower() == 'yes':
             play_again = True
             game_over = False
