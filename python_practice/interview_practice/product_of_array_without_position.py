@@ -6,22 +6,7 @@ in the array ex:[720,360,240,180,120]
 '''
 
 '''
-This solution assumes that the list is sorted in ascending order and increments by 1
-AKA not very good
-'''
-import math
-
-def product_of_all_but_i(my_list):
-    product_list = []
-    for i in my_list:
-        product_list.append(math.factorial(my_list[-1])/i)
-    return product_list
-
-product_of_all_but_i([1, 2, 3, 4, 5, 6])
-product_of_all_but_i([6, 5, 4, 3, 2, 1])
-
-'''
-A more robust and easy solution
+A more robust and very easy solution
 '''
 def product_of_list(my_list):
     total = 1
@@ -31,7 +16,6 @@ def product_of_list(my_list):
 
 def product_without_i(my_list):
     new_list = []
-    total = product_of_all_but_i(my_list)
     for i in my_list:
         new_list.append(product_of_list(my_list)/i)
     return new_list
@@ -40,7 +24,26 @@ product_without_i([1, 2, 3, 4, 5, 6])
 product_without_i([6, 5, 4, 3, 2, 1])
 
 '''
-without division - 21min
+without division - easy pop and insert ~15m
+pop current index from array
+iterate through new array and multiply all together then append product to new list
+put popped index,value back in array and continue looping
+'''
+def simple(my_list):
+    new_array = []
+    for index, num in enumerate(my_list):
+        total = 1
+        current_value = my_list.pop(index)
+        for num2 in my_list:
+            total *= num2
+        my_list.insert(index,current_value)
+        new_array.append(total)
+    return new_array
+
+simple([3,4,5])
+
+'''
+without division -hard tried to do slicing on either side of index
 '''
 def product_of_all_no_division(my_list):
     total = 1
@@ -64,18 +67,18 @@ def product_of_all_no_division(my_list):
 
 product_of_all_no_division([3,4,5])
 
-#%%
-def simple(my_list):
-    new_array = []
-    for index, num in enumerate(my_list):
-        total = 1
-        current_value = my_list.pop(index)
-        for num2 in my_list:
-            total *= num2
-        my_list.insert(index,current_value)
-        new_array.append(total)
-    return new_array
+'''
+This solution assumes that the list is sorted in ascending order and increments by 1
+factorial
+AKA not good at all
+'''
+import math
 
-simple([3,4,5])
+def product_using_factorial(my_list):
+    product_list = []
+    for i in my_list:
+        product_list.append(math.factorial(my_list[-1])/i)
+    return product_list
 
-#%%
+product_using_factorial([1, 2, 3, 4, 5, 6])
+product_using_factorial([6, 5, 4, 3, 2, 1])
