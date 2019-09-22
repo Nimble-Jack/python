@@ -5,6 +5,7 @@
 !bootcamp_projects
 !interview_practice
 !python_practice
+!think_python
 
 # Whitelist some files
 !.gitignore
