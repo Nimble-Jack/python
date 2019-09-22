@@ -4,7 +4,7 @@ class Deck():
     def __init__(self):
         suits = ['Hearts', 'Spades', 'Diamonds', 'Clubs']
         #ranks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'J', 'Q', 'K', 'A']
-        ranks = [1,2,3,'K','A']
+        ranks = [9,'Q']
         self.deck = []
         for suit in suits:
             for rank in ranks:
@@ -84,11 +84,12 @@ class Hand():
             return True
         elif self.point_value > 21:
             print('Bust...')
+            self.point_value = 0
             return True
         else:
             return False
 
-
+# TODO betting system
 class Bet():
     pass
 
@@ -97,12 +98,14 @@ if __name__ == '__main__':
     game_over = False
     play_again = True
     while play_again:
+        # Sets up a fresh game
         game = Deck()
         player = Hand('Your')
         dealer = Hand('Dealer')
         game.shuffle()
         player.deal(game.deck)
         dealer.deal(game.deck)
+        # Starts game
         while not game_over:
             # Player
             player.check_and_show()
@@ -130,8 +133,8 @@ if __name__ == '__main__':
                 if dealer.is_blackjack():
                     game_over = True
                     break
-            # TODO fix the 'you'
-            if dealer.points() > player.points() or dealer.points() == player.points():
+            # Game Winner
+            if dealer.point_value > player.point_value or dealer.point_value == player.point_value:
                 print('You loose!')
                 game_over = True
             else:
