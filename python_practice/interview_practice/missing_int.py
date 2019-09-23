@@ -24,15 +24,10 @@ def missing_int (my_list):
             return x
 
     # handles no missing integer
-    if high_number+1 == 0:
-        high_number +=2
-    high_number +=1
-    return high_number
+    return high_number +1
 
-
-missing_int([3,4,-1,1])
-missing_int([ 1, 2, 0])
-missing_int([-3,-5,-1,4])
-missing_int([3,5,4])
-missing_int([-3,-5,-4])
-
+#missing_int([3,4,-1,1])
+#missing_int([ 1, 2, 0])
+#missing_int([-3,-5,-1,4])
+#missing_int([3,5,4])
+#missing_int([-3,-5,-4])
