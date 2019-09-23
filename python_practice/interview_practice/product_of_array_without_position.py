@@ -24,6 +24,21 @@ product_without_i([1, 2, 3, 4, 5, 6])
 product_without_i([6, 5, 4, 3, 2, 1])
 
 '''
+easy ~ 5min
+iterate through list twice, make sure that current position is skipped
+'''
+def no_division(my_list):
+    new_array =[]
+    for num in my_list:
+        total = 1
+        for num2 in my_list:
+            if num != num2:
+                total *= num2
+        new_array.append(total)
+    return new_array
+no_division([1, 2, 3, 4, 5, 6])
+
+'''
 without division - easy pop and insert ~15m
 pop current index from array
 iterate through new array and multiply all together then append product to new list
@@ -82,3 +97,5 @@ def product_using_factorial(my_list):
 
 product_using_factorial([1, 2, 3, 4, 5, 6])
 product_using_factorial([6, 5, 4, 3, 2, 1])
+
+#%%
