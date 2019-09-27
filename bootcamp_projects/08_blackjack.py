@@ -91,7 +91,18 @@ class Hand():
 
 # TODO betting system
 class Bet():
-    pass
+    def __init__(self,bet_amount):
+        self.bet_amount
+        self.bank
+
+    def how_much_to_bet(self):
+        pass
+
+    def win_hand(self):
+        pass
+
+    def loose_hand(self):
+        pass
 
 
 if __name__ == '__main__':
