@@ -3,7 +3,7 @@
 
 # Whitelist some directories
 !bootcamp_projects
-!interview_practice
+!daily_coding_question
 !leetcode
 !python_practice
 !think_python
