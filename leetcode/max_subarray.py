@@ -8,7 +8,7 @@ Output: 6
 Explanation: [4,-1,2,1] has the largest sum = 6.
 '''
 #%%
-def maxSubArray(nums):
+def maxSubArray1(nums):
     """
     :type nums: List[int]
     :rtype: int
@@ -26,8 +26,17 @@ def maxSubArray(nums):
 
     return total
 #%%
-#maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
+def maxSubArray1(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
 
-maxSubArray([-2,1])
+
+
+#%%
+maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
+
+#maxSubArray([-2,1])
 
 #%%
